@@ -1,24 +1,16 @@
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const list = [
-    { id: uuidv4(), task: "Regar as Plantas" },
-    { id: uuidv4(), task: "Lavar a Louça" },
-    { id: uuidv4(), task: "Comprar o Pão" },
-    { id: uuidv4(), task: "Tomar Café" },
-    { id: uuidv4(), task: "Ver Aulas" },
-  ];
-
-  console.log(list);
+  const [list, setList] = useState([{ id: uuidv4(), task: "Lavar Louça" }]);
+  const [inputTask, setInputTask] = useState("");
 
   function inputMudou(event) {
-    console.log(event.target.value);
-    list.push({ id: uuidv4(), task: event.target.value });
-
-    console.log(list);
+    setInputTask(event.target.value);
   }
   function butaoClicado() {
-    console.log("fui clicado");
+    setList([...list, { id: uuidv4(), task: inputTask }]);
   }
 
   return (
