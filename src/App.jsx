@@ -1,20 +1,49 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Container, ToDoList, Input, Button, ListItem } from "./styles";
-import { FcFullTrash, FcCheckmark } from "react-icons/fc";
+import {
+  Container,
+  ToDoList,
+  Input,
+  Button,
+  ListItem,
+  CheckButton,
+  Trash,
+  NoItemsMessage,
+} from "./styles";
 
 function App() {
-  const [list, setList] = useState([
-    { id: uuidv4(), task: "Lavar Louça", finished: true },
-  ]);
+  const [list, setList] = useState([]);
   const [inputTask, setInputTask] = useState("");
 
   function inputMudou(event) {
     setInputTask(event.target.value);
   }
   function butaoClicado() {
-    setList([...list, { id: uuidv4(), task: inputTask, finished: false }]);
+    if (inputTask) {
+      setList([
+        ...list,
+        { id: uuidv4(), task: inputTask, finishedTask: false },
+      ]);
+    } else {
+      alert("Não é possível adicionar tarefa vazia");
+    }
+  }
+
+  function finishTask(id) {
+    const newList = list.map((itemList) =>
+      itemList.id === id
+        ? { ...itemList, finishedTask: !itemList.finishedTask }
+        : itemList
+    );
+
+    setList(newList);
+  }
+
+  function deleteTask(id) {
+    const newList = list.filter((item) => item.id !== id);
+
+    setList(newList);
   }
 
   return (
@@ -27,15 +56,17 @@ function App() {
         />
         <Button onClick={butaoClicado}>Adicionar</Button>
         <ul>
-          {list.map((item) => (
-            <>
-              <ListItem isFinished={item.finished}>
-                <FcCheckmark />
-                <li key={item.id}>{item.task}</li>
-                <FcFullTrash />
+          {list.length > 0 ? (
+            list.map((item) => (
+              <ListItem isFinished={item.finishedTask} key={item.id}>
+                <CheckButton onClick={() => finishTask(item.id)} />
+                <li>{item.task}</li>
+                <Trash onClick={() => deleteTask(item.id)} />
               </ListItem>
-            </>
-          ))}
+            ))
+          ) : (
+            <NoItemsMessage>Não há itens na lista</NoItemsMessage>
+          )}
         </ul>
       </ToDoList>
     </Container>

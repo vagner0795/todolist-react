@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FcFullTrash, FcCheckmark } from "react-icons/fc";
 
 export const Container = styled.div`
   width: 100vw;
@@ -38,17 +39,42 @@ export const Button = styled.button`
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;
+
+  &&:hover {
+    opacity: 0.8;
+  }
+
+  &&:active {
+    opacity: 0.6;
+  }
 `;
 
 export const ListItem = styled.div`
   height: 60px;
   width: 500px;
   border: 5px;
-  background-color: ${(props) => (props.isFinished ? "#e8ff8b" : "#e4e4e4")};
+  background-color: ${(props) => (props.isFinished ? "#e4e4e4" : "#333333")};
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
   padding: 0 10px;
+  color: #ffffff;
+`;
+
+export const CheckButton = styled(FcCheckmark)`
+  cursor: pointer;
+  font-size: 25px;
+`;
+
+export const Trash = styled(FcFullTrash)`
+  cursor: pointer;
+  font-size: 25px;
+`;
+
+export const NoItemsMessage = styled.h3`
+  font-size: 20px;
+  text-align: center;
+  color: #ff0000;
 `;
