@@ -43,7 +43,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: #0097ff;
+  background-color: #a9bcd0;
   width: 130px;
   border: none;
   height: 40px;
@@ -66,14 +66,13 @@ export const ListItem = styled.div`
   height: 60px;
   width: 500px;
   border: 5px;
-  background-color: ${(props) => (props.isFinished ? "#616161" : "#333333")};
+  background-color: ${(props) => (props.isFinished ? "#CCF5AC" : "#A9BCD0")};
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
   padding: 0 10px;
-  color: #ffffff;
 
   @media (max-width: 500px) {
     width: 250px;
