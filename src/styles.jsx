@@ -19,6 +19,12 @@ export const ToDoList = styled.div`
     padding: 0;
     margin-top: 60px;
   }
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Input = styled.input`
@@ -27,6 +33,13 @@ export const Input = styled.input`
   height: 40px;
   margin-right: 40px;
   width: 340px;
+  padding-left: 5px;
+
+  @media (max-width: 500px) {
+    width: 250px;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
 `;
 
 export const Button = styled.button`
@@ -53,7 +66,7 @@ export const ListItem = styled.div`
   height: 60px;
   width: 500px;
   border: 5px;
-  background-color: ${(props) => (props.isFinished ? "#e4e4e4" : "#333333")};
+  background-color: ${(props) => (props.isFinished ? "#616161" : "#333333")};
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
@@ -61,6 +74,10 @@ export const ListItem = styled.div`
   margin-bottom: 30px;
   padding: 0 10px;
   color: #ffffff;
+
+  @media (max-width: 500px) {
+    width: 250px;
+  }
 `;
 
 export const CheckButton = styled(FcCheckmark)`
@@ -76,5 +93,5 @@ export const Trash = styled(FcFullTrash)`
 export const NoItemsMessage = styled.h3`
   font-size: 20px;
   text-align: center;
-  color: #ff0000;
+  color: #0097ff;
 `;
