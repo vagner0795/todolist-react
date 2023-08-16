@@ -17,7 +17,11 @@ function App() {
   const [inputTask, setInputTask] = useState("");
 
   function inputMudou(event) {
-    setInputTask(event.target.value);
+    if (event.target.value.length <= 20) {
+      setInputTask(event.target.value);
+    } else {
+      alert("Tarefa muito grande");
+    }
   }
   function butaoClicado() {
     if (inputTask) {
@@ -25,6 +29,7 @@ function App() {
         ...list,
         { id: uuidv4(), task: inputTask, finishedTask: false },
       ]);
+      setInputTask("");
     } else {
       alert("Não é possível adicionar tarefa vazia");
     }
@@ -50,6 +55,7 @@ function App() {
     <Container>
       <ToDoList>
         <Input
+          value={inputTask}
           onChange={inputMudou}
           type="text"
           placeholder="Digite o que tenho para fazer"

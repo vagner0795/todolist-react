@@ -65,7 +65,7 @@ export const Button = styled.button`
 export const ListItem = styled.div`
   height: 60px;
   width: 500px;
-  border: 5px;
+  border-radius: 10px;
   background-color: ${(props) => (props.isFinished ? "#CCF5AC" : "#A9BCD0")};
   box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -73,9 +73,11 @@ export const ListItem = styled.div`
   align-items: center;
   margin-bottom: 30px;
   padding: 0 10px;
+  overflow: hidden;
 
   @media (max-width: 500px) {
     width: 250px;
+    font-size: 14px;
   }
 `;
 
